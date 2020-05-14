@@ -1,0 +1,64 @@
+#include "monty.h"
+
+/**
+ * push - push a element to the stack
+ * @stack: double linked list for the stack
+ * @line_number: the number of the current line
+ * Return: nothing
+ */
+
+void push(stack_t **stack, unsigned int line_number)
+{
+	char *strnum = NULL;
+	unsigned int i = 0;
+	stack_t *new = NULL, *crnt;
+
+	strnum = strtok(NULL, " /n/r/t");
+	while (strnum[i] != '\000' && strnum[i] != '\n')
+	{
+		if (_isdigit(strnum[i]) == 0)
+		{
+			fprintf(stderr, "L%u: usage: push integer\n", line_number);
+			exit(EXIT_FAILURE);
+		}
+		i++;
+	}
+	new = malloc(sizeof(stack_t));
+	if (!new)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
+	new->n =  atoi(strnum);
+	new->next = NULL;
+	if (!*stack)
+	{
+		new->prev = NULL;
+		*stack = new;
+	}
+	else
+	{
+		crnt = *stack;
+		while (crnt->next)
+		{
+			crnt = crnt->next;
+		}
+		new->prev = crnt;
+		crnt->next = new;
+	}
+}
+
+/**
+ * pal - prints all elements of the stack
+ * @stack: double linked list for the stack
+ * @line_number: the number of the current line
+ * Return: nothing
+ */
+void pall(stack_t **stack, unsigned int line_number)
+{
+	stack_t *crnt = *stack;
+
+	(void) line_number;
+	while (crnt)
+		fprintf(stdout, "%d\n", crnt->n), crnt = crnt->next;
+}
