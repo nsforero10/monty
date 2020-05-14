@@ -11,9 +11,12 @@ void push(stack_t **stack, unsigned int line_number)
 {
 	char *strnum = NULL;
 	unsigned int i = 0;
+	int neg = 1;
 	stack_t *new = NULL, *crnt;
 
 	strnum = strtok(NULL, " /n/r/t");
+	if  (strnum[0] == '-')
+		neg = -1, strnum++;
 	while (strnum[i] != '\000' && strnum[i] != '\n')
 	{
 		if (_isdigit(strnum[i]) == 0)
@@ -29,7 +32,7 @@ void push(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	new->n =  atoi(strnum);
+	new->n = neg * atoi(strnum);
 	new->next = NULL;
 	if (!*stack)
 	{
