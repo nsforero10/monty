@@ -1,5 +1,11 @@
 #include "monty.h"
 gvar_t gvar;
+
+/**
+ * get_opp - get the function to handle the operation
+ * @opcode: the operation identifier
+ * Return: nothing
+ */
 void (*get_opp(char *opcode))(stack_t **stack, unsigned int line_number)
 {
 	unsigned int i = 0;

@@ -49,7 +49,7 @@ void push(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * pal - prints all elements of the stack
+ * pall - prints all elements of the stack
  * @stack: double linked list for the stack
  * @line_number: the number of the current line
  * Return: nothing
