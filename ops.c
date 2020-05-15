@@ -97,7 +97,7 @@ void pop(stack_t **stack, unsigned int line_number)
 
 	(void) line_number;
 	if (!*stack)
-		fprintf(stderr, "L%u: can't pop, stack empty\n", line_number),
+		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number),
 			frees(), exit(EXIT_FAILURE);
 	while (crnt->next)
 		crnt = crnt->next;
