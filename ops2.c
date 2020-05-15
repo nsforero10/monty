@@ -20,3 +20,15 @@ void add(stack_t **stack, unsigned int line_number)
 	crnt->prev->next = NULL;
 	free(crnt);
 }
+
+/**
+ * nop - does nothing
+ * @stack: double linked list for the stack
+ * @line_number: the number of the current line
+ * Return: nothing
+ */
+void nop(stack_t **stack, unsigned int line_number)
+{
+	(void) stack;
+	(void) line_number;
+}
