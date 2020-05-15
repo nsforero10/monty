@@ -31,7 +31,8 @@ void push(stack_t **stack, unsigned int line_number)
 	}
 	new = malloc(sizeof(stack_t));
 	if (!new)
-		fprintf(stderr, "Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n"),
+		frees(), exit(EXIT_FAILURE);
 	new->n = neg * atoi(strnum);
 	new->next = NULL;
 	if (!*stack)
@@ -55,7 +56,7 @@ void push(stack_t **stack, unsigned int line_number)
 void pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *crnt = *stack;
-	
+
 	(void) line_number;
 	if (!*stack)
 		return;
