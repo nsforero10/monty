@@ -16,3 +16,20 @@ int _isdigit(int caracter)
 		resultado = 0;
 	return (resultado);
 }
+
+/**
+ * init_vars - sets the initial values to the global variable
+ * @v: the global variable
+ * Return: 0 on success, 1 on fail
+ */
+
+int init_vars(gvar_t *v)
+{
+	v->buff = NULL;
+	v->line_number = 0;
+	v->file = NULL;
+	v->h = NULL;
+	v->instuctions = NULL;
+	v->sz = 0;
+	return (0);
+}

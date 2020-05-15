@@ -2,6 +2,26 @@
 gvar_t gvar;
 
 /**
+ * frees - free everything on the program
+ * Return: nothing
+ */
+void frees(void)
+{
+	stack_t *crnt = gvar.h, *tmp = NULL;
+
+	if (gvar.buff)
+		free(gvar.buff);
+	if (gvar.file)
+		fclose(gvar.file);
+	while (crnt)
+	{
+		tmp = crnt;
+		crnt = crnt->next;
+		free(tmp);
+	}
+}
+
+/**
  * get_opp - get the function to handle the operation
  * @opcode: the operation identifier
  * Return: nothing
@@ -24,22 +44,6 @@ void (*get_opp(char *opcode))(stack_t **stack, unsigned int line_number)
 	return (NULL);
 }
 
-/**
- * init_vars - sets the initial values to the global variable
- * @v: the global variable
- * Return: 0 on success, 1 on fail
- */
-
-int init_vars(gvar_t *v)
-{
-	v->buff = NULL;
-	v->line_number = 0;
-	v->file = NULL;
-	v->h = NULL;
-	v->instuctions = NULL;
-	v->sz = 0;
-	return (0);
-}
 
 /**
  * main - main function
@@ -56,6 +60,7 @@ int main(int ac, char **av)
 	if (ac != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
+		frees();
 		return (EXIT_FAILURE);
 	}
 
@@ -64,23 +69,25 @@ int main(int ac, char **av)
 	if (!gvar.file)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
-			/* code */
+		frees();
 		return (EXIT_FAILURE);
 	}
 	while (getline(&gvar.buff, &gvar.sz, gvar.file) != EOF)
 	{
 		opname = strtok(gvar.buff, " \n\t\r");
-		funct = get_opp(opname);
-
-		if (funct != NULL)
+		if (opname)
 		{
-			funct(&gvar.h, gvar.line_number);
-		}
-		else
-		{
-			return (EXIT_FAILURE);
+			funct = get_opp(opname);
+			if (funct != NULL)
+				funct(&gvar.h, gvar.line_number);
+			else
+			{
+				frees();
+				return (EXIT_FAILURE);
+			}
 		}
 		gvar.line_number++;
 	}
+	frees();
 	return (EXIT_SUCCESS);
 }

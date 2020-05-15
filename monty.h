@@ -62,11 +62,13 @@ int init_vars(gvar_t *v);
 void (*get_opp(char *opcode))(stack_t **stack, unsigned int line_number);
 
 /* OPERATIONS FUNCTIONS PROTOTPYES*/
+
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 
 /* AUXILIAR FUNCTIONS*/
 
 int _isdigit(int caracter);
+void frees(void);
 
 #endif /* MONTY_MONTY_H */
