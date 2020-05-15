@@ -60,6 +60,9 @@ void pall(stack_t **stack, unsigned int line_number)
 	stack_t *crnt = *stack;
 
 	(void) line_number;
+	while (crnt->next)
+		crnt = crnt->next;
+	
 	while (crnt)
-		fprintf(stdout, "%d\n", crnt->n), crnt = crnt->next;
+		fprintf(stdout, "%d\n", crnt->n), crnt = crnt->prev;
 }
