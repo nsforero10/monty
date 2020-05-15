@@ -85,7 +85,28 @@ void pint(stack_t **stack, unsigned int line_number)
 	fprintf(stdout, "%d\n", crnt->n);
 }
 
+/**
+ * pop - prints the element on the top of the stack
+ * @stack: double linked list for the stack
+ * @line_number: the number of the current line
+ * Return: nothing
+ */
+void pop(stack_t **stack, unsigned int line_number)
+{
+	stack_t *crnt = *stack;
 
+	(void) line_number;
+	if (!*stack)
+		fprintf(stderr, "L%u: can't pop, stack empty\n", line_number),
+			frees(), exit(EXIT_FAILURE);
+	while (crnt->next)
+		crnt = crnt->next;
+	if (crnt->prev)
+		crnt->prev->next = NULL;
+	else
+		*stack = NULL;
+	free(crnt);
+}
 
 
 
