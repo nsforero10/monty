@@ -32,7 +32,8 @@ void (*get_opp(char *opcode))(stack_t **stack, unsigned int line_number)
 
 	instruction_t ops[] = {
 		{"push", push},
-		{"pall", pall}
+		{"pall", pall},
+		{NULL, NULL}
 	};
 
 	while (ops[i].opcode)
