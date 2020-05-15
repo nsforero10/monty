@@ -58,6 +58,9 @@ void pstr(stack_t **stack, unsigned int line_number)
 	stack_t *crnt = *stack;
 
 	(void) line_number;
+	if (!head || !*head)
+		fprintf(stdout, "\n");
+		return;
 	while (crnt->next)
 		crnt = crnt->next;
 	while (crnt)
