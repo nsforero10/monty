@@ -62,7 +62,7 @@ void pstr(stack_t **stack, unsigned int line_number)
 		crnt = crnt->next;
 	while (crnt)
 	{
-		if (crnt->n < 32 || crnt->n > 126)
+		if (crnt->n < 31 || crnt->n > 126)
 			break;
 		putchar(crnt->n);
 		crnt = crnt->prev;
