@@ -26,7 +26,7 @@ int _isdigit(int caracter)
 int init_vars(gvar_t *v)
 {
 	v->buff = NULL;
-	v->line_number = 0;
+	v->line_number = 1;
 	v->file = NULL;
 	v->h = NULL;
 	v->instuctions = NULL;
