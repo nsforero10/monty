@@ -14,7 +14,7 @@ void push(stack_t **stack, unsigned int line_number)
 	int neg = 1;
 	stack_t *new = NULL, *crnt;
 
-	strnum = strtok(NULL, " /n/r/t");
+	strnum = strtok(NULL, " /n/t");
 	if (!strnum)
 		fprintf(stderr, "L%u: usage: push integer\n", line_number),
 		frees(), exit(EXIT_FAILURE);

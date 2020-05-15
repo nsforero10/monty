@@ -82,7 +82,7 @@ int main(int ac, char **av)
 	}
 	while (getline(&gvar.buff, &gvar.sz, gvar.file) != EOF)
 	{
-		opname = strtok(gvar.buff, " \n\t\r");
+		opname = strtok(gvar.buff, " \n\t");
 		if (opname)
 		{
 			funct = get_opp(opname);
@@ -98,5 +98,5 @@ int main(int ac, char **av)
 		gvar.line_number++;
 	}
 	frees();
-	return (0);
+	return (EXIT_SUCCESS);
 }
