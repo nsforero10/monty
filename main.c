@@ -74,9 +74,7 @@ int main(int ac, char **av)
 		frees();
 		return (EXIT_FAILURE);
 	}
-
 	gvar.file = fopen(av[1], "r");
-
 	if (!gvar.file)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
@@ -86,6 +84,8 @@ int main(int ac, char **av)
 	while (getline(&gvar.buff, &gvar.sz, gvar.file) != EOF)
 	{
 		opname = strtok(gvar.buff, " \n\t");
+		if (opname[0] == '#')
+			continue;
 		if (opname)
 		{
 			funct = get_opp(opname);
