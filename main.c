@@ -98,5 +98,5 @@ int main(int ac, char **av)
 		gvar.line_number++;
 	}
 	frees();
-	return (EXIT_SUCCESS);
+	return (0);
 }
