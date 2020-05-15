@@ -65,3 +65,31 @@ void pall(stack_t **stack, unsigned int line_number)
 	while (crnt)
 		fprintf(stdout, "%d\n", crnt->n), crnt = crnt->prev;
 }
+
+/**
+ * pint - prints the element on the top of the stack
+ * @stack: double linked list for the stack
+ * @line_number: the number of the current line
+ * Return: nothing
+ */
+void pint(stack_t **stack, unsigned int line_number)
+{
+	stack_t *crnt = *stack;
+
+	(void) line_number;
+	if (!*stack)
+		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number),
+			frees(), exit(EXIT_FAILURE);
+	while (crnt->next)
+		crnt = crnt->next;
+	fprintf(stdout, "%d\n", crnt->n);
+}
+
+
+
+
+
+
+
+
+
