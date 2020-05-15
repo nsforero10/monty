@@ -39,6 +39,7 @@ void (*get_opp(char *opcode))(stack_t **stack, unsigned int line_number)
 		{"add", add},
 		{"nop", nop},
 		{"sub", sub},
+		{"div", divide},
 		{NULL, NULL}
 	};
 
