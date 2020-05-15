@@ -20,8 +20,13 @@ void push(stack_t **stack, unsigned int line_number)
 	while (strnum[i] != '\000' && strnum[i] != '\n')
 	{
 		if (_isdigit(strnum[i]) == 0)
-			fprintf(stderr, "L%u: usage: push integer\n", line_number),
-			frees(), exit(EXIT_FAILURE);
+		{
+			if (i == 0)
+				fprintf(stderr, "L%u: usage: push integer\n", line_number),
+				frees(), exit(EXIT_FAILURE);
+			else
+				strnum[i] = '\000';
+		}
 		i++;
 	}
 	new = malloc(sizeof(stack_t));
