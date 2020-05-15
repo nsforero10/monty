@@ -41,7 +41,7 @@ void pchar(stack_t **stack, unsigned int line_number)
 	while (crnt->next)
 		crnt = crnt->next;
 	if (crnt->n < 33 || crnt->n > 126)
-		fprintf(stderr, "L%u: can't pchar, stack empty\n", line_number),
+		fprintf(stderr, "L%u: can't pchar, value out of range\n", line_number),
 		frees(), exit(EXIT_FAILURE);
 	else
 		fprintf(stdout, "%c\n", crnt->n);
