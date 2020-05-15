@@ -84,6 +84,7 @@ int main(int ac, char **av)
 				funct(&gvar.h, gvar.line_number);
 			else
 			{
+				fprintf(stderr, "L%u: unknown instruction %s\n", gvar.line_number, opname);
 				frees();
 				return (EXIT_FAILURE);
 			}

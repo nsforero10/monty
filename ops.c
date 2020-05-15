@@ -24,11 +24,8 @@ void push(stack_t **stack, unsigned int line_number)
 	{
 		if (_isdigit(strnum[i]) == 0)
 		{
-			if (i == 0)
-				fprintf(stderr, "L%u: usage: push integer\n", line_number),
-				frees(), exit(EXIT_FAILURE);
-			else
-				strnum[i] = '\000';
+			fprintf(stderr, "L%u: usage: push integer\n", line_number),
+			frees(), exit(EXIT_FAILURE);
 		}
 		i++;
 	}
