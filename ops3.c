@@ -59,12 +59,15 @@ void pstr(stack_t **stack, unsigned int line_number)
 
 	(void) line_number;
 	while (crnt->next)
+		crnt = crnt->next;
+	while (crnt)
 	{
 		if (crnt->n < 33 || crnt->n > 126)
 			break;
-		fprintf(stdout, "%c", crnt->n);
-		crnt = crnt->next;
+		putchar(crnt->n);
+		crnt = crnt->prev;
 	}
+
 	fprintf(stdout, "\n");
 }
 
