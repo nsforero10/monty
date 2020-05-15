@@ -108,6 +108,27 @@ void pop(stack_t **stack, unsigned int line_number)
 	free(crnt);
 }
 
+/**
+ * swap - prints the element on the top of the stack
+ * @stack: double linked list for the stack
+ * @line_number: the number of the current line
+ * Return: nothing
+ */
+void swap(stack_t **stack, unsigned int line_number)
+{
+	stack_t *crnt = *stack;
+	int tmp = 0;
+
+	(void) line_number;
+	if (!*stack || !crnt->next)
+		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number),
+			frees(), exit(EXIT_FAILURE);
+	while (crnt->next)
+		crnt = crnt->next;
+	tmp = crnt->n;
+	crnt->n = crnt->prev->n;
+	crnt->prev->n = tmp;
+}
 
 
 
