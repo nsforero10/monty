@@ -129,9 +129,3 @@ void swap(stack_t **stack, unsigned int line_number)
 	crnt->n = crnt->prev->n;
 	crnt->prev->n = tmp;
 }
-
-
-
-
-
-
