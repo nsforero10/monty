@@ -58,7 +58,6 @@ typedef struct global_vars
 
 /* MAIN FUNCTIONS PROTOTYPES*/
 
-int init_vars(gvar_t *v);
 void (*get_opp(char *opcode))(stack_t **stack, unsigned int line_number);
 
 /* OPERATIONS FUNCTIONS PROTOTPYES*/

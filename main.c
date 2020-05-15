@@ -58,6 +58,7 @@ int main(int ac, char **av)
 
 	void (*funct)(stack_t **, unsigned int) = NULL;
 
+	gvar.line_number = 1;
 	if (ac != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
