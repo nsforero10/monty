@@ -62,8 +62,8 @@ void pstr(stack_t **stack, unsigned int line_number)
 	{
 		if (crnt->n < 33 || crnt->n > 126)
 			break;
-		crnt = crnt->next;
 		fprintf(stdout, "%c", crnt->n);
+		crnt = crnt->next;
 	}
 	fprintf(stdout, "\n");
 }
