@@ -46,3 +46,27 @@ void pchar(stack_t **stack, unsigned int line_number)
 	else
 		fprintf(stdout, "%c\n", crnt->n);
 }
+
+/**
+ * pstr - prints the element on the top of the stack
+ * @stack: double linked list for the stack
+ * @line_number: the number of the current line
+ * Return: nothing
+ */
+void pstr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *crnt = *stack;
+
+	(void) line_number;
+	while (crnt->next)
+	{
+		if (crnt->n < 33 || crnt->n > 126)
+			break;
+		crnt = crnt->next;
+		fprintf(stdout, "%c", crnt->n);
+	}
+	fprintf(stdout, "\n");
+}
+
+
+
